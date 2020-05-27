@@ -1,3 +1,60 @@
+mport 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+
+String apiKey = "604614deb88f4ea981963e4139f50084";
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.white,
+      ),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  bool _loading;
+  var newslist;
+
+  void getNews() async {
+    News news = News();
+    await news.getNews();
+    newslist = news.news;
+    setState(() {
+      _loading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    _loading = true;
+    super.initState();
+    getNews();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
+}
+
 class News {
 
   List<Article> news  = [];
