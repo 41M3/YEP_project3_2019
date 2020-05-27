@@ -29,6 +29,7 @@ class NewsApi {
           );
           news.add(article);
         }
+        print(element['title']);
       });
     }
   }
@@ -56,6 +57,8 @@ class NewsCategory {
             articleUrl: element["url"],
           );
           news.add(article);
+          list = news.news;
+          list[0].urlToImage;
         }
       });
     }
