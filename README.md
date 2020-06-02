@@ -17,13 +17,4 @@ flutter run
 
 
 ### Home Page
-![EPIAIRCONSOLE view](./epi_air_mobile/assets/views/home.png)
-
-### Game 1 : Tetris
-![EPIAIRCONSOLE view](./epi_air_mobile/assets/views/tetris.png)
-
-### Game 2 : Runner
-![EPIAIRCONSOLE view](./epi_air_mobile/assets/views/runner.png)
-
-### Web Gamepad
-![EPIAIRCONSOLE view](./epi_air_mobile/assets/views/gamepad.png)
+![EPIFLIPBOARD view](./epi_air_mobile/assets/views/home.png)
