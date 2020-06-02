@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         '/Aime': (_) => homePage(),
         '/Gaetan': null,
         '/Charles': null},
-      
+
       home: MyHomePage(title: 'Home Page'),
     );
   }

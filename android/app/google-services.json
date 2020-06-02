@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "487209646537",
+    "firebase_url": "https://epiflipboard-3d596.firebaseio.com",
+    "project_id": "epiflipboard-3d596",
+    "storage_bucket": "epiflipboard-3d596.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487209646537:android:f32cf09aa54798f0ee9018",
+        "android_client_info": {
+          "package_name": "motti.epiflipboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487209646537-6688614afjmt8ot0cpr5vu0p4ep74gol.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7ag14QpQ3BcEIDStib4OXcgoEQsQRPCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "487209646537-6688614afjmt8ot0cpr5vu0p4ep74gol.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
