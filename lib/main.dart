@@ -15,7 +15,12 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      routes: {'/Aime': (_) => homePage(), '/Gaetan': null, '/Charles': null},
+
+      routes: {
+        '/Aime': (_) => homePage(),
+        '/Gaetan': null,
+        '/Charles': null},
+      
       home: MyHomePage(title: 'Home Page'),
     );
   }
@@ -77,7 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ListTile(
             title: MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/Gaetan');
+                },
                 child: Text(
                   "API 1",
                   style: TextStyle(color: Colors.white, fontSize: 30),
@@ -89,7 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ListTile(
             title: MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/Charles');
+                },
                 child: Text(
                   "API 2",
                   style: TextStyle(color: Colors.white, fontSize: 30),
