@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'Aime/connexion.dart';
+import 'package:epiflipboard/Aime/services/is_it_logged.dart';
+import 'package:epiflipboard/Aime/services/auth.dart';
 //import 'Gaetan/api_one.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
 
       routes: {
-        '/Aime': (_) => homePage(),
+        '/Aime': (_) => new IsItLogged(auth: new Auth()),
         //'/Gaetan': (_) => api_one(),
         '/Charles': null},
 
