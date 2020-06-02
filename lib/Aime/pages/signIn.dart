@@ -63,7 +63,7 @@ class _SigninPageState extends State<SigninPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('Signin'),
+          title: new Text('Connexion'),
         ),
         body: Stack(
           children: <Widget>[
@@ -118,7 +118,7 @@ class _SigninPageState extends State<SigninPage> {
               Icons.mail,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
+        validator: (value) => value.isEmpty ? 'L\' e-mail ne peut pas être vide !' : null,
         onSaved: (value) => _email = value.trim(),
       ),
     );
@@ -132,12 +132,12 @@ class _SigninPageState extends State<SigninPage> {
         obscureText: true,
         autofocus: false,
         decoration: new InputDecoration(
-            hintText: 'Password',
+            hintText: 'Mot de passe',
             icon: new Icon(
               Icons.lock,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
+        validator: (value) => value.isEmpty ? 'Le mot de passe ne peut pas être vide !' : null,
         onSaved: (value) => _password = value.trim(),
       ),
     );
@@ -153,7 +153,7 @@ class _SigninPageState extends State<SigninPage> {
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
             color: Colors.blue,
-            child: new Text('Login',
+            child: new Text('Connexion',
                 style: new TextStyle(fontSize: 20.0, color: Colors.white)),
             onPressed: validateAndSubmit,
           ),
@@ -162,11 +162,14 @@ class _SigninPageState extends State<SigninPage> {
 
   Widget signUpButton() {
     return new FlatButton(
-        child: new Text('Create an account',
+        child: new Text('Créer un compte',
             style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300)),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => new SignupPage()));
+              builder: (BuildContext context) => new SignupPage(
+                auth: widget.auth,
+                loginCallback: widget.loginCallback,
+              )));
         });
   }
 

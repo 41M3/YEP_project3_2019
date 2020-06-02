@@ -18,6 +18,8 @@ class _SignupPageState extends State<SignupPage> {
   String _password;
   String _errorMessage;
 
+  bool _isLoginForm;
+
   bool validateAndSave() {
     final form = _formKey.currentState;
     if (form.validate()) {
@@ -30,14 +32,17 @@ class _SignupPageState extends State<SignupPage> {
   void validateAndSubmit() async {
     setState(() {
       _errorMessage = "";
+      _isLoginForm = false;
     });
     if (validateAndSave()) {
       String userId = "";
       try {
-        userId = await widget.auth.signUp(_email, _password);
-        //widget.auth.sendEmailVerification();
-        //_showVerifyEmailSentDialog();
-        print('Signed up user: $userId');
+          userId = await widget.auth.signUp(_email, _password);
+          print('Signed up user: $userId');
+
+        if (userId.length > 0 && userId != null) {
+          widget.loginCallback();
+        }
       } catch (e) {
         print('Error: $e');
         setState(() {
@@ -63,7 +68,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('Signup'),
+          title: new Text('Inscription'),
         ),
         body: Stack(
           children: <Widget>[
@@ -83,7 +88,7 @@ class _SignupPageState extends State<SignupPage> {
               //showLogo(),
               showEmailInput(),
               showPasswordInput(),
-              showCheckPasswordInput(),
+              //showCheckPasswordInput(),
               signUpButton(),
               showErrorMessage(),
             ],
@@ -106,6 +111,13 @@ class _SignupPageState extends State<SignupPage> {
   }*/
 
   Widget showEmailInput() {
+
+    bool emailValid(email) {
+      return (RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+          .hasMatch(email));
+    }
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
       child: new TextFormField(
@@ -118,7 +130,7 @@ class _SignupPageState extends State<SignupPage> {
               Icons.mail,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
+        validator: (value) => value.isEmpty ? 'L\' e-mail ne peut pas être vide !' : !emailValid(value) ? 'This is not a valid email' : null,
         onSaved: (value) => _email = value.trim(),
       ),
     );
@@ -132,12 +144,18 @@ class _SignupPageState extends State<SignupPage> {
         obscureText: true,
         autofocus: false,
         decoration: new InputDecoration(
-            hintText: 'Password',
+            hintText: 'Mot de passe',
             icon: new Icon(
               Icons.lock,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
+        validator: (value) => value.isEmpty
+            ? 'Le mot de passe ne peut pas être vide !'
+            : value.trim().length < 8
+                ? 'Le mot de passe doit contenir plus de 8 charactères !'
+                : value.trim().length > 100
+                    ? "Le mot de passe doit contenir moins de 100 charactères !"
+                    : null,
         onSaved: (value) => _password = value.trim(),
       ),
     );
@@ -151,12 +169,18 @@ class _SignupPageState extends State<SignupPage> {
         obscureText: true,
         autofocus: false,
         decoration: new InputDecoration(
-            hintText: 'Retype Password',
+            hintText: 'Retaper le mot de passe',
             icon: new Icon(
               Icons.lock,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
+        validator: (value) => value.isEmpty
+            ? 'Le mot de passe ne peut pas être vide !'
+            : value.trim().length < 8
+                ? 'Le mot de passe doit contenir plus de 8 charactères !'
+                : value.trim().length > 100
+                    ? "Le mot de passe doit contenir moins de 100 charactères !"
+                    : null,
         onSaved: (value) => _password = value.trim(),
       ),
     );
@@ -172,7 +196,7 @@ class _SignupPageState extends State<SignupPage> {
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
             color: Colors.blue,
-            child: new Text('Create account',
+            child: new Text('Créer un compte',
                 style: new TextStyle(fontSize: 20.0, color: Colors.white)),
             onPressed: validateAndSubmit,
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Aime/connexion.dart';
-import 'Gaetan/api_one.dart';
+//import 'Gaetan/api_one.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 
       routes: {
         '/Aime': (_) => homePage(),
-        '/Gaetan': (_) => api_one(),
+        //'/Gaetan': (_) => api_one(),
         '/Charles': null},
 
       home: MyHomePage(title: 'Home Page'),
