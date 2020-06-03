@@ -30,6 +30,7 @@ class NewsApi {
           news.add(article);
         }
         print(element['title']);
+        print("\n");
       });
     }
   }
