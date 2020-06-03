@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:epiflipboard/Aime/services/is_it_logged.dart';
 import 'package:epiflipboard/Aime/services/auth.dart';
 //import 'Gaetan/api_one.dart';
+import 'package:epiflipboard/Charles/getNews.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/Aime': (_) => new IsItLogged(auth: new Auth()),
         //'/Gaetan': (_) => api_one(),
-        '/Charles': null},
+        '/Charles': (_) => Bite()},
 
       home: MyHomePage(title: 'Home Page'),
     );
@@ -82,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(15.0),
                 )),
           ),
+          /*
           ListTile(
             title: MaterialButton(
                 onPressed: () {
@@ -96,13 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(15.0),
                 )),
           ),
+          */
           ListTile(
             title: MaterialButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed('/Charles');
                 },
                 child: Text(
-                  "API 2",
+                  "API",
                   style: TextStyle(color: Colors.white, fontSize: 30),
                 ),
                 color: Color(0xff850606),

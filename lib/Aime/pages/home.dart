@@ -23,8 +23,17 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void User() async {
+    try {
+      String user = await widget.auth.getUserName();
+      print(user);
+    } catch (e) {}
+  }
+
   @override
   Widget build(BuildContext context) {
+    User();
+
     return new Scaffold(
         appBar: new AppBar(
           title: new Text('EPIFLIPBOARD HOME'),
@@ -37,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Container(
           padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
-          child: Text('EPIFLIPBOARD', style: TextStyle(fontSize: 45)),
+          child: Text('EPIFLIPBOARD FRONT TEST', style: TextStyle(fontSize: 45)),
           color: Color(0xff0000ff),
         ));
   }
