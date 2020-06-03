@@ -1,30 +1,10 @@
 import 'package:flutter/material.dart';
-//import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:epiflipboard/Gaetan/news_api.dart';
 
 
 String apiKey = "604614deb88f4ea981963e4139f50084";
-
-/*
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
-      home: HomePage(),
-    );
-  }
-}
-*/
 
 class News_Getter extends StatefulWidget {
   @override
@@ -65,52 +45,3 @@ class _News_Getter extends State<News_Getter> {
         ));
   }
 }
-
-/*
-class News {
-
-  List<Article> news  = [];
-
-  Future<void> getNews() async{
-
-    String url = "http://newsapi.org/v2/top-headlines?country=in&excludeDomains=stackoverflow.com&sortBy=publishedAt&language=en&apiKey=${apiKey}";
-
-    var response = await http.get(url);
-
-    var jsonData = jsonDecode(response.body);
-
-    if(jsonData['status'] == "ok"){
-      jsonData["articles"].forEach((element){
-
-        if(element['urlToImage'] != null && element['description'] != null){
-          Article article = Article(
-            title: element['title'],
-            author: element['author'],
-            description: element['description'],
-            urlToImage: element['urlToImage'],
-            publshedAt: DateTime.parse(element['publishedAt']),
-            content: element["content"],
-            articleUrl: element["url"],
-          );
-          news.add(article);
-        }
-        print(element['title']);
-      }
-      );
-    }
-  }
-}
-
-class Article{
-
-  String title;
-  String author;
-  String description;
-  String urlToImage;
-  DateTime publshedAt;
-  String content;
-  String articleUrl;
-
-  Article({this.title,this.description,this.author,this.content,this.publshedAt,
-    this.urlToImage, this.articleUrl});
-}*/

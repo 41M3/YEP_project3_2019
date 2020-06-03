@@ -29,8 +29,15 @@ class NewsApi {
           );
           news.add(article);
         }
+        print("Title\n");
         print(element['title']);
-        print("\n");
+        print("Description\n");
+        print(element['description']);
+        print("Author\n");
+        print(element['author']);
+        print("Published\n");
+        print(element['publishedAt']);
+        print("Next News\n");
       });
     }
   }
