@@ -23,16 +23,17 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  /*
   void User() async {
     try {
       String user = await widget.auth.getUserName();
       print(user);
     } catch (e) {}
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
-    User();
+    //User();
 
     return new Scaffold(
         appBar: new AppBar(
