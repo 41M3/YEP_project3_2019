@@ -35,6 +35,7 @@ class NewsApi {
   }
 }
 
+/*
 class NewsCategory {
   List<Article> news  = [];
 
@@ -63,7 +64,7 @@ class NewsCategory {
       });
     }
   }
-}
+}*/
 
 class Article {
   String title;

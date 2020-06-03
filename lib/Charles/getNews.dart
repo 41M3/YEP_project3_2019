@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+//import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:epiflipboard/Gaetan/news_api.dart';
 
 
 String apiKey = "604614deb88f4ea981963e4139f50084";
 
+/*
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -22,19 +24,20 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+*/
 
-class HomePage extends StatefulWidget {
+class Bite extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  State<StatefulWidget> createState() => new _BiteState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _BiteState extends State<Bite> {
 
   bool _loading;
   var newslist;
 
   void getNews() async {
-    News news = News();
+    NewsApi news = NewsApi();
     await news.getNews();
     newslist = news.news;
     setState(() {
@@ -51,10 +54,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text('EPIFLIPBOARD API'),
+        ),
+        body: Container(
+          padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
+          child: Text('EPIFLIPBOARD API TEST', style: TextStyle(fontSize: 45)),
+          color: Color(0xff0000ff),
+        ));
   }
 }
 
+/*
 class News {
 
   List<Article> news  = [];
@@ -101,4 +113,4 @@ class Article{
 
   Article({this.title,this.description,this.author,this.content,this.publshedAt,
     this.urlToImage, this.articleUrl});
-}
+}*/
