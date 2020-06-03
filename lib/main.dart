@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/Aime': (_) => new IsItLogged(auth: new Auth()),
         //'/Gaetan': (_) => api_one(),
-        '/Charles': (_) => Bite()},
+        '/Charles': (_) => News_Getter()},
 
       home: MyHomePage(title: 'Home Page'),
     );
