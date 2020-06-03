@@ -26,12 +26,12 @@ class MyApp extends StatelessWidget {
 }
 */
 
-class Bite extends StatefulWidget {
+class News_Getter extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => new _BiteState();
+  State<StatefulWidget> createState() => new _News_Getter();
 }
 
-class _BiteState extends State<Bite> {
+class _News_Getter extends State<News_Getter> {
 
   bool _loading;
   var newslist;
