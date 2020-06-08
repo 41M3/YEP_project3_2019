@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:epiflipboard/Aime/pages/signIn.dart';
-import 'package:epiflipboard/Aime/services/auth.dart';
-import 'package:epiflipboard/Aime/pages/home.dart';
+import 'package:epiflipboard/front/pages/signIn.dart';
+import 'package:epiflipboard/back/firebase/auth.dart';
+import 'package:epiflipboard/front/pages/homepage.dart';
 
 enum AuthStatus {
   NOT_DETERMINED,
@@ -77,7 +77,7 @@ class _IsItLoggedState extends State<IsItLogged> {
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
-          return new HomePage(
+          return new NewsHomePage(
             userId: _userId,
             auth: widget.auth,
             logoutCallback: logoutCallback,

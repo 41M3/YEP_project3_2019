@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:epiflipboard/Aime/services/auth.dart';
-import 'package:epiflipboard/Aime/pages/signUp.dart';
+import 'package:epiflipboard/back/firebase/auth.dart';
+import 'package:epiflipboard/front/pages/signUp.dart';
 
 class SigninPage extends StatefulWidget {
   SigninPage({this.auth, this.loginCallback});
@@ -63,7 +63,21 @@ class _SigninPageState extends State<SigninPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('Connexion'),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Epi",
+                style:
+                    TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
+              ),
+              Text(
+                "FlipBoard",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
         ),
         body: Stack(
           children: <Widget>[
@@ -80,7 +94,8 @@ class _SigninPageState extends State<SigninPage> {
           child: new ListView(
             shrinkWrap: true,
             children: <Widget>[
-              //showLogo(),
+              showLogo(),
+              displayTextContainer("CONNEXION"),
               showEmailInput(),
               showPasswordInput(),
               signInButton(),
@@ -91,23 +106,32 @@ class _SigninPageState extends State<SigninPage> {
         ));
   }
 
-  /*Widget showLogo() {
+  Widget showLogo() {
     return new Hero(
       tag: 'hero',
       child: Padding(
         padding: EdgeInsets.fromLTRB(0.0, 70.0, 0.0, 0.0),
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
-          radius: 48.0,
-          child: Image.asset(''),
+          radius: 80.0,
+          child: Image.asset('assets/bannière.png'),
         ),
       ),
     );
-  }*/
+  }
+
+  Widget displayTextContainer(text) {
+    return Padding(
+        padding: const EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          Text(text, style: new TextStyle(fontSize: 20.0, color: Colors.white)),
+        ]));
+  }
 
   Widget showEmailInput() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
       child: new TextFormField(
         maxLines: 1,
         keyboardType: TextInputType.emailAddress,
@@ -118,7 +142,8 @@ class _SigninPageState extends State<SigninPage> {
               Icons.mail,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'L\' e-mail ne peut pas être vide !' : null,
+        validator: (value) =>
+            value.isEmpty ? 'L\' e-mail ne peut pas être vide !' : null,
         onSaved: (value) => _email = value.trim(),
       ),
     );
@@ -137,7 +162,8 @@ class _SigninPageState extends State<SigninPage> {
               Icons.lock,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'Le mot de passe ne peut pas être vide !' : null,
+        validator: (value) =>
+            value.isEmpty ? 'Le mot de passe ne peut pas être vide !' : null,
         onSaved: (value) => _password = value.trim(),
       ),
     );
@@ -152,7 +178,7 @@ class _SigninPageState extends State<SigninPage> {
             elevation: 5.0,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
-            color: Colors.blue,
+            color: Colors.red,
             child: new Text('Connexion',
                 style: new TextStyle(fontSize: 20.0, color: Colors.white)),
             onPressed: validateAndSubmit,
@@ -167,9 +193,9 @@ class _SigninPageState extends State<SigninPage> {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (BuildContext context) => new SignupPage(
-                auth: widget.auth,
-                loginCallback: widget.loginCallback,
-              )));
+                    auth: widget.auth,
+                    loginCallback: widget.loginCallback,
+                  )));
         });
   }
 

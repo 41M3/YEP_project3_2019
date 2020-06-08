@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/auth.dart';
+import 'package:epiflipboard/back/firebase/auth.dart';
 
 class SignupPage extends StatefulWidget {
   SignupPage({this.auth, this.loginCallback});
@@ -37,12 +37,9 @@ class _SignupPageState extends State<SignupPage> {
     if (validateAndSave()) {
       String userId = "";
       try {
-          userId = await widget.auth.signUp(_email, _password);
-          print('Signed up user: $userId');
-
-        if (userId.length > 0 && userId != null) {
-          widget.loginCallback();
-        }
+        userId = await widget.auth.signUp(_email, _password);
+        print('Signed up user: $userId');
+        if (userId.length > 0 && userId != null) widget.loginCallback();
       } catch (e) {
         print('Error: $e');
         setState(() {
@@ -67,9 +64,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text('Inscription'),
-        ),
+        appBar: new AppBar(),
         body: Stack(
           children: <Widget>[
             _showForm(),
@@ -85,7 +80,8 @@ class _SignupPageState extends State<SignupPage> {
           child: new ListView(
             shrinkWrap: true,
             children: <Widget>[
-              //showLogo(),
+              showLogo(),
+              displayTextContainer("INSCRIPTION"),
               showEmailInput(),
               showPasswordInput(),
               //showCheckPasswordInput(),
@@ -96,30 +92,38 @@ class _SignupPageState extends State<SignupPage> {
         ));
   }
 
-  /*Widget showLogo() {
+  Widget showLogo() {
     return new Hero(
       tag: 'hero',
       child: Padding(
         padding: EdgeInsets.fromLTRB(0.0, 70.0, 0.0, 0.0),
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
-          radius: 48.0,
-          child: Image.asset(''),
+          radius: 80.0,
+          child: Image.asset('assets/bannière.png'),
         ),
       ),
     );
-  }*/
+  }
+
+  Widget displayTextContainer(text) {
+    return Padding(
+        padding: const EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          Text(text, style: new TextStyle(fontSize: 20.0, color: Colors.white)),
+        ]));
+  }
 
   Widget showEmailInput() {
-
     bool emailValid(email) {
       return (RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(email));
     }
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
       child: new TextFormField(
         maxLines: 1,
         keyboardType: TextInputType.emailAddress,
@@ -130,7 +134,9 @@ class _SignupPageState extends State<SignupPage> {
               Icons.mail,
               color: Colors.grey,
             )),
-        validator: (value) => value.isEmpty ? 'L\' e-mail ne peut pas être vide !' : !emailValid(value) ? 'This is not a valid email' : null,
+        validator: (value) => value.isEmpty
+            ? 'L\' e-mail ne peut pas être vide !'
+            : !emailValid(value) ? 'This is not a valid email' : null,
         onSaved: (value) => _email = value.trim(),
       ),
     );
@@ -195,7 +201,7 @@ class _SignupPageState extends State<SignupPage> {
             elevation: 5.0,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
-            color: Colors.blue,
+            color: Colors.red,
             child: new Text('Créer un compte',
                 style: new TextStyle(fontSize: 20.0, color: Colors.white)),
             onPressed: validateAndSubmit,
