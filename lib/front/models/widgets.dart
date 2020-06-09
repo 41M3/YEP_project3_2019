@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:epiflipboard/front/models/article_view.dart';
+import 'package:epiflipboard/front/pages/Account.dart';
+import 'package:epiflipboard/front/pages/signIn.dart';
 import 'package:epiflipboard/back/firebase/auth.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
-Widget MyAppBar(auth, logoutCallback) {
+Widget MyAppBar(logged, context, auth, loginCallback, logoutCallback, userId) {
   signOut() async {
     try {
       await auth.signOut();
@@ -12,29 +15,79 @@ Widget MyAppBar(auth, logoutCallback) {
     }
   }
 
-  return AppBar(
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          "Epi",
-          style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
-        ),
-        Text(
-          "FlipBoard",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-        ),
-      ],
+  var alertStyle = AlertStyle(
+    isCloseButton: false,
+    descStyle: TextStyle(fontWeight: FontWeight.bold),
+    animationDuration: Duration(milliseconds: 200),
+    alertBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30.0),
+      side: BorderSide(color: Color(0xff303030)),
     ),
-    actions: <Widget>[
-      new FlatButton(
-          child: new Text('Logout',
-              style: new TextStyle(fontSize: 17.0, color: Colors.white)),
-          onPressed: signOut)
-    ],
-    backgroundColor: Colors.transparent,
-    elevation: 0.0,
+    titleStyle: TextStyle(
+      color: Colors.white,
+    ),
   );
+
+  void connectedAlert(context) {
+    Alert(
+        style: alertStyle,
+        context: context,
+        title: "Se connecter ?",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Oui !",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.pop(context),
+            color: Colors.red,
+          )
+        ]).show();
+  }
+
+  return AppBar(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            "Epi",
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
+          ),
+          Text(
+            "FlipBoard",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        IconButton(
+            icon: Icon(Icons.account_box, color: Colors.white, size: 30),
+            onPressed: () {
+              logged
+                  ? Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => AccountPage()))
+                  : Navigator.pop(context);
+              /*SigninPage(
+                        auth: auth,
+                        loginCallback: loginCallback,
+                      );*/
+            }),
+        new FlatButton(
+            child: new Text('Logout',
+                style: new TextStyle(fontSize: 17.0, color: Colors.white)),
+            onPressed: () {
+              logged ? signOut : Navigator.pop(context);
+              /*Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => SigninPage(
+                          auth: auth,
+                          loginCallback: loginCallback,
+                        ))
+            );*/
+            })
+      ],
+      backgroundColor: Colors.transparent,
+      elevation: 0.0,
+      automaticallyImplyLeading: false);
 }
 
 class NewsTile extends StatelessWidget {

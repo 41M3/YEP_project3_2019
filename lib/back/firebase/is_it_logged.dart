@@ -78,8 +78,10 @@ class _IsItLoggedState extends State<IsItLogged> {
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
           return new NewsHomePage(
+            logged: true,
             userId: _userId,
             auth: widget.auth,
+            loginCallback: loginCallback,
             logoutCallback: logoutCallback,
           );
         } else

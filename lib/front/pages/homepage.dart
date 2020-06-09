@@ -8,10 +8,12 @@ import 'package:epiflipboard/back/firebase/auth.dart';
 import 'package:epiflipboard/back/api/news.dart';
 
 class NewsHomePage extends StatefulWidget {
-  NewsHomePage({Key key, this.auth, this.userId, this.logoutCallback})
+  NewsHomePage({Key key, this.logged, this.auth, this.userId, this.loginCallback, this.logoutCallback})
       : super(key: key);
 
+  final bool logged;
   final BaseAuth auth;
+  final VoidCallback loginCallback;
   final VoidCallback logoutCallback;
   final String userId;
 
@@ -47,7 +49,7 @@ class _NewsHomePageState extends State<NewsHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(widget.auth, widget.logoutCallback),
+      appBar: MyAppBar(widget.logged, context, widget.auth, widget.loginCallback, widget.logoutCallback, widget.userId),
       body: SafeArea(
         child: _loading
             ? Center(

@@ -40,6 +40,7 @@ class _SignupPageState extends State<SignupPage> {
         userId = await widget.auth.signUp(_email, _password);
         print('Signed up user: $userId');
         if (userId.length > 0 && userId != null) widget.loginCallback();
+        Navigator.pop(context);
       } catch (e) {
         print('Error: $e');
         setState(() {

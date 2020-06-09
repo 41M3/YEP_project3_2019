@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:epiflipboard/back/firebase/auth.dart';
 import 'package:epiflipboard/front/pages/signUp.dart';
+import 'package:epiflipboard/front/pages/homepage.dart';
 
 class SigninPage extends StatefulWidget {
   SigninPage({this.auth, this.loginCallback});
@@ -46,6 +47,10 @@ class _SigninPageState extends State<SigninPage> {
         });
       }
     }
+  }
+
+  void skipValidateAndSubmit() async {
+    widget.loginCallback;
   }
 
   @override
@@ -101,6 +106,7 @@ class _SigninPageState extends State<SigninPage> {
               signInButton(),
               signUpButton(),
               showErrorMessage(),
+              skipButton(),
             ],
           ),
         ));
@@ -197,6 +203,30 @@ class _SigninPageState extends State<SigninPage> {
                     loginCallback: widget.loginCallback,
                   )));
         });
+  }
+
+  Widget skipButton() {
+    return new Padding(
+        padding: EdgeInsets.fromLTRB(0.0, 150.0, 0.0, 0.0),
+        child: SizedBox(
+          height: 40.0,
+          child: new RaisedButton(
+              elevation: 5.0,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
+              color: Colors.red,
+              child: new Text('Continuer sans se connecter',
+                  style: new TextStyle(fontSize: 20.0, color: Colors.white)),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => NewsHomePage(
+                          logged: false,
+                          userId: "UNKNOWN",
+                          auth: widget.auth,
+                          logoutCallback: widget.loginCallback,
+                        )));
+              }),
+        ));
   }
 
   Widget showErrorMessage() {
