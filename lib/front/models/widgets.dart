@@ -5,7 +5,7 @@ import 'package:epiflipboard/front/pages/signIn.dart';
 import 'package:epiflipboard/back/firebase/auth.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-Widget MyAppBar(logged, context, auth, loginCallback, logoutCallback, userId) {
+Widget MyAppBar(logged, context, auth, loginCallback, logoutCallback, userId, categories) {
   signOut() async {
     try {
       await auth.signOut();
@@ -65,7 +65,8 @@ Widget MyAppBar(logged, context, auth, loginCallback, logoutCallback, userId) {
             onPressed: () {
               logged
                   ? Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => AccountPage()))
+                      builder: (BuildContext context) => AccountPage(auth: auth, userId: userId, logoutCallback: logoutCallback, categories: categories,)))
+                  // AccountPage(auth, userId, logoutCallback, categories)))
                   : Navigator.pop(context);
               /*SigninPage(
                         auth: auth,
@@ -76,7 +77,7 @@ Widget MyAppBar(logged, context, auth, loginCallback, logoutCallback, userId) {
             child: new Text('Logout',
                 style: new TextStyle(fontSize: 17.0, color: Colors.white)),
             onPressed: () {
-              logged ? signOut : Navigator.pop(context);
+              logged ? signOut() : Navigator.pop(context);
               /*Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => SigninPage(
                           auth: auth,

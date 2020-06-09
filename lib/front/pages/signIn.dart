@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:epiflipboard/back/firebase/auth.dart';
 import 'package:epiflipboard/front/pages/signUp.dart';
 import 'package:epiflipboard/front/pages/homepage.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class SigninPage extends StatefulWidget {
   SigninPage({this.auth, this.loginCallback});
@@ -19,6 +20,36 @@ class _SigninPageState extends State<SigninPage> {
   String _email;
   String _password;
   String _errorMessage;
+
+  var alertStyle = AlertStyle(
+    isCloseButton: false,
+    descStyle: TextStyle(fontWeight: FontWeight.bold),
+    animationDuration: Duration(milliseconds: 200),
+    alertBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30.0),
+      side: BorderSide(color: Color(0xff303030)),
+    ),
+    titleStyle: TextStyle(
+      color: Colors.white,
+    ),
+  );
+
+  void connectedAlert(context) {
+    Alert(
+        style: alertStyle,
+        context: context,
+        title: "Compte créé !",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Cool",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.pop(context),
+            color: Colors.red,
+          )
+        ]).show();
+  }
 
   bool validateAndSave() {
     final form = _formKey.currentState;
@@ -39,6 +70,7 @@ class _SigninPageState extends State<SigninPage> {
         userId = await widget.auth.signIn(_email, _password);
         print('Signed in: $userId');
         if (userId.length > 0 && userId != null) widget.loginCallback();
+        //connectedAlert(context);
       } catch (e) {
         print('Error: $e');
         setState(() {
