@@ -60,7 +60,7 @@ class _NewsHomePageState extends State<NewsHomePage> {
                   child: Column(
                     children: <Widget>[
                       /// Categories
-                      Container(
+                      /*Container(
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         height: 70,
                         child: ListView.builder(
@@ -72,7 +72,7 @@ class _NewsHomePageState extends State<NewsHomePage> {
                                 categoryName: categories[index].categorieName,
                               );
                             }),
-                      ),
+                      ),*/
 
                       /// News Article
                       Container(
