@@ -1,0 +1,29 @@
+{
+    "name": "docker_web_app",
+    "version": "1.0.0",
+    "description": "Node.js on Docker",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "connect-flash": "^0.1.1",
+        "cors": "^2.8.5",
+        "ejs": "^2.7.1",
+        "express": "^4.17.1",
+        "express-session": "^1.17.0",
+        "html5-plugin-canvas-gamepad": "^0.1.2",
+        "http": "0.0.1-security",
+        "ip": "^1.1.5",
+        "mongoose": "^5.7.7",
+        "node-fetch": "^2.6.0",
+        "openweather-apis": "^4.1.0",
+        "passport": "^0.4.0",
+        "passport-facebook": "^3.0.0",
+        "passport-google-oauth2": "^0.2.0",
+        "passport-local": "^1.0.0",
+        "request": "^2.88.0",
+        "socket.io": "^2.3.0"
+    }
+}
