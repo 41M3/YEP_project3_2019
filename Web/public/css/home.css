@@ -47,3 +47,22 @@ input[type=submit]:hover {
     color: red;
     border: 1px solid red;
 }
+
+.button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    margin: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 30px;
+  }
+
+ .title{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    text-align: center;
+}
