@@ -66,3 +66,16 @@ input[type=submit]:hover {
     padding-bottom: 10px;
     text-align: center;
 }
+
+#news {
+    color: white;
+}
+
+img {
+    width:50%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 40px;
+}
