@@ -32,3 +32,8 @@ var firebaseConfig = {
   var errorMessage = error.message;
   // ...
 });
+
+
+function LoginButtonPressed() {
+  window.alert("PUUUUTE");
+}
