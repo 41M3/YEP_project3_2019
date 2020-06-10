@@ -69,6 +69,8 @@ input[type=submit]:hover {
 
 #news {
     color: white;
+    overflow-y: scroll;
+    height: 88vh;
 }
 
 #news img {
