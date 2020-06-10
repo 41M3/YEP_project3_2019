@@ -5,4 +5,12 @@ router.get('/', function (req, res) {
     res.render('home');
 });
 
+router.get('/login', function (req, res) {
+    res.render('inscription');
+});
+
+router.get('/signin', function (req, res) {
+    res.render('connexion');
+});
+
 module.exports = router;
