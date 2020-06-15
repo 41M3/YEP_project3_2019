@@ -254,6 +254,7 @@ class _SigninPageState extends State<SigninPage> {
                     builder: (BuildContext context) => NewsHomePage(
                           logged: false,
                           userId: "UNKNOWN",
+                          userEmail: "UNKNOWN",
                           auth: widget.auth,
                           logoutCallback: widget.loginCallback,
                         )));

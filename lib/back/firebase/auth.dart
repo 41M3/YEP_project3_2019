@@ -6,13 +6,15 @@ abstract class BaseAuth {
 
   Future<String> signUp(String email, String password);
 
-  //Future<String> getUserName();
+  Future<String> getUserEmail();
 
   Future<FirebaseUser> getCurrentUser();
 
   Future<void> sendEmailVerification();
 
   Future<void> signOut();
+
+  Future<void> changePassword(String password);
 
   Future<bool> isEmailVerified();
 }
@@ -39,16 +41,23 @@ class Auth implements BaseAuth {
     return user;
   }
 
-  /*
-  Future<String> getUserName() async {
+  Future<String> getUserEmail() async {
     FirebaseUser user = await _firebaseAuth.currentUser();
-    return user.displayName;
+    return user.email;
   }
-   */
-
 
   Future<void> signOut() async {
     return _firebaseAuth.signOut();
+  }
+
+  Future<void> changePassword(String password) async {
+    FirebaseUser user = await _firebaseAuth.currentUser();
+
+    user.updatePassword(password).then((_) {
+      print("Mot de passe changé avec succès");
+    }).catchError((error) {
+      print("Le mot de passe ne peut-être changé" + error.toString());
+    });
   }
 
   Future<void> sendEmailVerification() async {

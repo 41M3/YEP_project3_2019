@@ -21,6 +21,8 @@ class IsItLogged extends StatefulWidget {
 class _IsItLoggedState extends State<IsItLogged> {
   AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
   String _userId = "";
+  String _userEmail = "";
+
 
   @override
   void initState() {
@@ -29,6 +31,7 @@ class _IsItLoggedState extends State<IsItLogged> {
       setState(() {
         if (user != null) {
           _userId = user?.uid;
+          _userEmail = user.email;
         }
         authStatus =
             user?.uid == null ? AuthStatus.NOT_LOGGED_IN : AuthStatus.LOGGED_IN;
@@ -40,6 +43,7 @@ class _IsItLoggedState extends State<IsItLogged> {
     widget.auth.getCurrentUser().then((user) {
       setState(() {
         _userId = user.uid.toString();
+        _userEmail = user.email;
       });
     });
     setState(() {
@@ -51,6 +55,7 @@ class _IsItLoggedState extends State<IsItLogged> {
     setState(() {
       authStatus = AuthStatus.NOT_LOGGED_IN;
       _userId = "";
+      _userEmail = "";
     });
   }
 
@@ -80,6 +85,7 @@ class _IsItLoggedState extends State<IsItLogged> {
           return new NewsHomePage(
             logged: true,
             userId: _userId,
+            userEmail : _userEmail,
             auth: widget.auth,
             loginCallback: loginCallback,
             logoutCallback: logoutCallback,
