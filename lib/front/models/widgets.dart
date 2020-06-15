@@ -4,8 +4,10 @@ import 'package:epiflipboard/front/pages/Account.dart';
 import 'package:epiflipboard/front/pages/signIn.dart';
 import 'package:epiflipboard/back/firebase/auth.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:epiflipboard/front/pages/Search.dart';
 
-Widget MyAppBar(logged, context, auth, loginCallback, logoutCallback, userId, categories) {
+Widget MyAppBar(logged, context, auth, loginCallback, logoutCallback, userId,
+    userEmail, categories, _valueGeneral) {
   signOut() async {
     try {
       await auth.signOut();
@@ -61,11 +63,27 @@ Widget MyAppBar(logged, context, auth, loginCallback, logoutCallback, userId, ca
       ),
       actions: <Widget>[
         IconButton(
+            icon: Icon(Icons.search, color: Colors.white, size: 30),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => searchPage(
+                        categories: categories,
+                      )));
+              // AccountPage(auth, userId, logoutCallback, categories)))
+            }),
+        IconButton(
             icon: Icon(Icons.account_box, color: Colors.white, size: 30),
             onPressed: () {
               logged
                   ? Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => AccountPage(auth: auth, userId: userId, logoutCallback: logoutCallback, categories: categories,)))
+                      builder: (BuildContext context) => AccountPage(
+                            auth: auth,
+                            userId: userId,
+                            userEmail: userEmail,
+                            logoutCallback: logoutCallback,
+                            categories: categories,
+                            valueGeneral: _valueGeneral,
+                          )))
                   // AccountPage(auth, userId, logoutCallback, categories)))
                   : Navigator.pop(context);
               /*SigninPage(
@@ -74,7 +92,7 @@ Widget MyAppBar(logged, context, auth, loginCallback, logoutCallback, userId, ca
                       );*/
             }),
         new FlatButton(
-            child: new Text('Logout',
+            child: new Text(logged ? 'Déconnexion' : 'Connexion',
                 style: new TextStyle(fontSize: 17.0, color: Colors.white)),
             onPressed: () {
               logged ? signOut() : Navigator.pop(context);

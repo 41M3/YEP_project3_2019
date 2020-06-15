@@ -35,18 +35,24 @@ class _CategoryNewsState extends State<CategoryNews> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Flutter",
-              style:
-                  TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+              "Epi",
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
             ),
             Text(
-              "News",
-              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),
-            )
+              "FlipBoard : ",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+            ),
+            Text(
+              widget.newsCategory.toUpperCase(),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+            ),
           ],
         ),
         actions: <Widget>[
