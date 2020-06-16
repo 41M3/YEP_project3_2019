@@ -2,6 +2,7 @@ function handleSignUp() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     
+    window.alert("j'ai reçu les éléments !" + email + "  " + password);
     console.log(email);
     console.log(password);
 
