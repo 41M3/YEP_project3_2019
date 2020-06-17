@@ -9,8 +9,37 @@
 </head>
 
 <body>
+  <!--
+  <script src="/__/firebase/7.15.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.15.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.15.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.15.0/firebase-firestore.js"></script>
+  -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+
+  <!-- 
+  <script>
+  // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAuCVJBCHJmtISIZ8FbzkrdFfAvY5aXEuI",
+      authDomain: "epiflipboard-3d596.firebaseapp.com",
+      databaseURL: "https://epiflipboard-3d596.firebaseio.com",
+      projectId: "epiflipboard-3d596",
+      storageBucket: "epiflipboard-3d596.appspot.com",
+      messagingSenderId: "487209646537",
+      appId: "1:487209646537:web:864903f9fd9715efee9018",
+      measurementId: "G-ELXDR9YFCH"
+    };
+    
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  -->
 
 </body>
+
+
 <div id="logo">
   <a href="http://localhost:3000" onclick="window.location.href='http://localhost:3000'"><img src="img/logo2.png"></a>
 </div>
@@ -25,28 +54,12 @@
       <input type="password" placeholder="Entrer le mot de passe" name="password" id="password" required>
       <br>
       <br>
-      <input type="submit" id='submit' value='LOGIN' onclick="handleSignUp()">
+      <!-- <input type="submit" id='submit' value='LOGIN' onclick="handleSignUp()"> -->
+      <input type="submit" id="submit" value='LOGIN'>
+      
+
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js%22%3E"> </script>
-<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js%22%3E"> </script>
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyAuCVJBCHJmtISIZ8FbzkrdFfAvY5aXEuI",
-    authDomain: "epiflipboard-3d596.firebaseapp.com",
-    databaseURL: "https://epiflipboard-3d596.firebaseio.com/",
-    projectId: "epiflipboard-3d596",
-    storageBucket: "epiflipboard-3d596.appspot.com",
-    messagingSenderId: "487209646537",
-    appId: "1:487209646537:web:864903f9fd9715efee9018",
-    measurementId: "G-ELXDR9YFCH"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
 
 <script src = "js/inscription.js" > </script>
 
