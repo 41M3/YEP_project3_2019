@@ -1,22 +1,29 @@
-//API web key = AIzaSyA7ag14QpQ3BcEIDStib4OXcgoEQsQRPCI
+var firebaseConfig = {
+  apiKey: "AIzaSyAuCVJBCHJmtISIZ8FbzkrdFfAvY5aXEuI",
+  authDomain: "epiflipboard-3d596.firebaseapp.com",
+  databaseURL: "https://epiflipboard-3d596.firebaseio.com",
+  projectId: "epiflipboard-3d596",
+  storageBucket: "epiflipboard-3d596.appspot.com",
+  messagingSenderId: "487209646537",
+  appId: "1:487209646537:web:864903f9fd9715efee9018",
+  measurementId: "G-ELXDR9YFCH"
+};
 
-/*
+firebase.initializeApp(firebaseConfig);
+
 function handleSignUp() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    
-    window.alert("j'ai reçu les éléments !" + email + "  " + password);
-    console.log(email);
-    console.log(password);
 
     if (email.length < 4) {
-      alert('Please enter an email address.');
+      alert('Please enter a correct email address.');
       return;
     }
     if (password.length < 4) {
-      alert('Please enter a password.');
+      alert('Please enter a better password.');
       return;
     }
+    window.alert("j'ai reçu les éléments !" + email + "  " + password);
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -28,6 +35,7 @@ function handleSignUp() {
       }
       console.log(error);
     });
+    window.history.back(); 
 }
 
 function sendEmailVerification() {
@@ -36,10 +44,8 @@ function sendEmailVerification() {
     });
 }
 
-handleSignUp();
-
-*/
-
+/*
+FIREBASE YOUTUBE TUTORIAL
 
 (function() {
   var firebaseConfig = {
@@ -82,3 +88,4 @@ handleSignUp();
     })
 
 }());
+*/
