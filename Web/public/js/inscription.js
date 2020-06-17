@@ -42,7 +42,6 @@ handleSignUp();
 
 
 (function() {
-  
   var firebaseConfig = {
     apiKey: "AIzaSyAuCVJBCHJmtISIZ8FbzkrdFfAvY5aXEuI",
     authDomain: "epiflipboard-3d596.firebaseapp.com",
@@ -53,6 +52,7 @@ handleSignUp();
     appId: "1:487209646537:web:864903f9fd9715efee9018",
     measurementId: "G-ELXDR9YFCH"
   };
+  
   firebase.initializeApp(firebaseConfig);
   
   const email = document.getElementById('email');
@@ -67,7 +67,7 @@ handleSignUp();
     const auth = firebase.auth();
 
     window.alert("Infos reçues : " + b_email + "  " + b_password);
-    const promise = auth.createUserWithEmailAndPassword(email, password);
+    const promise = auth.createUserWithEmailAndPassword(b_email, b_password);
     promise
       .catch(e => console.log(e.message));
 
