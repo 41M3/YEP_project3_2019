@@ -11,3 +11,5 @@ build/
 android.iml
 app.iml
 test.html
+
+node_modules
