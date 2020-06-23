@@ -1,24 +1,16 @@
+var firebaseConfig = {
+  apiKey: "AIzaSyAuCVJBCHJmtISIZ8FbzkrdFfAvY5aXEuI",
+  authDomain: "epiflipboard-3d596.firebaseapp.com",
+  databaseURL: "https://epiflipboard-3d596.firebaseio.com",
+  projectId: "epiflipboard-3d596",
+  storageBucket: "epiflipboard-3d596.appspot.com",
+  messagingSenderId: "487209646537",
+  appId: "1:487209646537:web:864903f9fd9715efee9018",
+  measurementId: "G-ELXDR9YFCH"
+};
 
-//update de l'ui si l'user est déjà co !
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-    document.getElementById("user_div").style.display = "block";
-    document.getElementById("login_div").style.display = "none";
-    var user = firebase.auth().currentUser;
-    if (user != null) {
-      var email_id = user.email;
-      document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
-    }
-  } else {
-    document.getElementById("container").style.display = "none";
-    document.getElementById("container").style.display = "block";
-  }
-});
-//
+firebase.initializeApp(firebaseConfig);
 
-
-//erreur 404.... chais pas pourquoi....
 function LoginButtonPressed() {
   var userEmail = document.getElementById("email").value;
   var userPass = document.getElementById("password").value;
@@ -27,11 +19,27 @@ function LoginButtonPressed() {
     // Errors
     var errorCode = error.code;
     var errorMessage = error.message;
-
     window.alert("Error : " + errorMessage);
-
   });
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var user = firebase.auth().currentUser;
+    var name, email, uid;
+
+    if (user != null) {
+      name = user.displayName;
+      email = user.email;
+      uid = user.uid;
+    }
+    window.alert("You're logged in as : " + email);  
+  } else {
+    // No user is signed in.
+    window.alert("You're not logged in !");
+  }
+});
 
 function logout(){
   firebase.auth().signOut();
