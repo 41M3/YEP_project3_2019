@@ -151,7 +151,7 @@ class _AccountPageState extends State<AccountPage> {
               changePasswordInput(),
               changePasswordButton(),
               showErrorMessage(),
-              displayVoidPadding(null, 100.0, null, null),
+       /*       displayVoidPadding(null, 100.0, null, null),
               displayTextContainer("Catégories favorites"),
               checkBox("Business", Icon(Icons.keyboard_arrow_right), true),
               checkBox("Entertainment", Icon(Icons.keyboard_arrow_right), true),
@@ -159,7 +159,7 @@ class _AccountPageState extends State<AccountPage> {
               checkBox("Health", Icon(Icons.keyboard_arrow_right), true),
               checkBox("Science", Icon(Icons.keyboard_arrow_right), false),
               checkBox("Sports", Icon(Icons.keyboard_arrow_right), true),
-              checkBox("Technology", Icon(Icons.keyboard_arrow_right), true),
+              checkBox("Technology", Icon(Icons.keyboard_arrow_right), true),*/
             ],
           ),
         ));

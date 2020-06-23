@@ -69,12 +69,12 @@ class NewsForSearch {
   List<Article> news = [];
 
   Future<void> getNewsForSearch(String search) async {
-    /*String url = "http://newsapi.org/v2/everything?q=$category&apiKey=${apiKey}";*/
+    /*String url = "http://newsapi.org/v2/everything?q=$category&language=fr&apiKey=${apiKey}";*/
     /*'https://newsapi.org/v2/everything?q=' +
             searchQuery +
             '&sortBy=popularity'*/
     String url =
-        "http://newsapi.org/v2/top-headlines?q=$search&sortBy=publishedAt&apiKey=${apiKey}";
+        "http://newsapi.org/v2/top-headlines?language=fr&q=$search&sortBy=publishedAt&apiKey=${apiKey}";
 
     var response = await http.get(url);
 
