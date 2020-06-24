@@ -38,9 +38,8 @@ async function searchButton() {
   
   if (trump.length == 0 || trump == "reset") {
     document.location.reload(true);
-    //getNews(); le call marche, la condition est bonne mais pas d'affichage
+    //getNews();  le call marche, la condition est bonne mais pas d'affichage
   }
-
   const searchURL = "https://newsapi.org/v2/everything?q=" + trump + "&apiKey=" + apiKey;
   
   let response = await fetch(searchURL);
@@ -68,6 +67,10 @@ async function searchButton() {
       }
     });
   return articlesArray;
+}
+
+function reset() {
+  document.location.reload(true);
 }
 
 getNews(Url)
