@@ -12,7 +12,6 @@ async function getNews(url) {
   let jsonResponse = await response.json();
   let articlesArray = jsonResponse.articles;
 
-
   articlesArray.forEach((elemnt) => {
     if (elemnt.author != null && elemnt.title != null && elemnt.description != null && elemnt.url != null && elemnt.urlToImage != null) {    
       let articleRow =
@@ -31,12 +30,17 @@ async function getNews(url) {
       news.innerHTML += articleRow;
     }
   });
-  
   return articlesArray;
 }
 
 async function searchButton() {
   const trump = document.getElementById("trump").value;
+  
+  if (trump.length == 0 || trump == "reset") {
+    document.location.reload(true);
+    //getNews(); le call marche, la condition est bonne mais pas d'affichage
+  }
+
   const searchURL = "https://newsapi.org/v2/everything?q=" + trump + "&apiKey=" + apiKey;
   
   let response = await fetch(searchURL);
@@ -65,8 +69,5 @@ async function searchButton() {
     });
   return articlesArray;
 }
-
-
-
 
 getNews(Url)
