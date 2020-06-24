@@ -34,9 +34,18 @@ var firebaseConfig = {
         email = user.email;
         uid = user.uid;
       }
+      document.getElementById("connect").hidden = true;
+      document.getElementById("sign").hidden = true;
+      document.getElementById("logout").hidden = false;
+      document.getElementById("user").innerHTML = 'Bienvenue ' + user.email;
+      document.getElementById("user").hidden = false;
       window.alert("You're logged in as : " + email);  
     } else {
       // No user is signed in.
+      document.getElementById("connect").hidden = false;
+      document.getElementById("sign").hidden = false;
+      document.getElementById("logout").hidden = true;
+      document.getElementById("user").hidden = true;
       window.alert("You're not logged in !");
     }
   });

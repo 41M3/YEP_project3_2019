@@ -4,7 +4,7 @@
   position: absolute;
   display: flex;
   margin-top: 10px;
-  margin-left: 85px;
+  margin-left: 200px;
 }
 
 .searchTerm {
@@ -24,7 +24,7 @@
 
 /*Resize the wrap to see the search bar change!*/
 .wrap{
-  width: 30%;
+  width: 35%;
   position: absolute;
   top: 10%;
   left: 10%;
@@ -35,7 +35,7 @@
 /* RESET BUTTON */
 
 .resetButton, .searchButton {
-  margin-left: 5px;
+  margin-left: 15px;
   height: 40px;
   background-color: red;
   border: none;
@@ -43,4 +43,5 @@
   text-decoration: none;
   font-size: 25px;
   display: inline;
+  border-radius: 10px;
 }

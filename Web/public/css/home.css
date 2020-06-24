@@ -47,16 +47,36 @@ input[type=submit]:hover {
     border: 1px solid red;
 }
 
+#category {
+    position: absolute;
+    left: 75vw;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.wrap h3 {
+    position: absolute;
+    left: 66vw;
+    font-size: 25px;
+    margin-top: 10px;
+    color: white;
+}
+
 .button {
     background-color: red;
     border: none;
     color: white;
     text-decoration: none;
     font-size: 25px;
-    display: inline;
     margin-left: 5px;
     left: 0;
+    border-radius: 10px;
   }
+
+.user {
+    position: absolute;
+    left: 0;
+}
 
  .title{
     width: 38%;
@@ -71,7 +91,7 @@ input[type=submit]:hover {
     margin-top: 15vh;
     color: white;
     overflow-y: scroll;
-    height: 75vh;
+    height: 69vh;
 
 }
 

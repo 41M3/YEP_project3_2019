@@ -12,11 +12,12 @@
 <body>
   
   <div id="container">
-    <a class="button" href="http://localhost:3000/login" onclick="window.location.href='http://localhost:3000/login'">Connexion</a>
+    <a id="connect" class="button" href="http://localhost:3000/login" onclick="window.location.href='http://localhost:3000/login'">Connexion</a>
 
-    <a class="button" href="http://localhost:3000/signin" onclick="window.location.href='http://localhost:3000/signin'">Inscription</a>  
-
+    <a id="sign" class="button" href="http://localhost:3000/signin" onclick="window.location.href='http://localhost:3000/signin'">Inscription</a>  
+    <a id='logout' class="button" onclick="logout()">Déconnexion</a>
     <img src="img/logo2.png">
+    <h3 id="user" hidden="true"></h3>
   </div>
 
   <H1 class="title">EpiFlipboard</H1>
@@ -32,7 +33,7 @@
       <button class="resetButton" onclick="reset()">
         Rénitialiser
       </button>
-
+      <h3>Catégories:</h3>
       <select id="category" name="Category" onchange="searchCategory()">
         <option value="General">Génétal</option>
         <option value="Business">Busnesse</option>
@@ -51,6 +52,10 @@
   </div>
 
 </body>
-
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+<script src = "js/firebase.js" > </script>
 <script src="js/newsapi.js"></script>
 </html>
