@@ -30,6 +30,32 @@ async function getNews(url) {
   return articlesArray;
 }
 
+async function searchCategory() {
+  var category = document.getElementById("category").value;
+  var url = "http://newsapi.org/v2/top-headlines?country=fr&category=" + category+ "&apiKey=";
+  let response = await fetch(url + apiKey);
+  let jsonResponse = await response.json();
+  let articlesArray = jsonResponse.articles;
+
+  news.innerHTML = null
+  articlesArray.forEach((elemnt) => {
+    if (elemnt.author != null && elemnt.title != null && elemnt.description != null && elemnt.url != null && elemnt.urlToImage != null) {    
+      let articleRow =
+        '<div class="articlerow">' +
+        ' <a href="' + elemnt.url + '" target="_blank" class="readmore"><img class="storyimage" src="' + elemnt.urlToImage + '" /></a>' +
+        ' <div class="article">' +
+        '   <h2 class="article_title">' + elemnt.title + '</h2>' +
+        '   <p> ' + elemnt.description + '</p>' +
+        '   <h3>Rédigé par ' + elemnt.author +'</h3>' +
+        ' </div>' +
+        '</div>';
+  
+      news.innerHTML += articleRow;
+    }
+  });
+  return articlesArray;
+}
+
 async function searchButton() {
   const trump = document.getElementById("trump").value;
   
@@ -44,6 +70,7 @@ async function searchButton() {
   let articlesArray = jsonResponse.articles;
 
   //reset l'affichage des news
+  news.innerHTML = null;
   articlesArray.forEach((elemnt) => {
       if (elemnt.author != null && elemnt.title != null && elemnt.description != null && elemnt.url != null && elemnt.urlToImage != null) {    
         let articleRow =
@@ -56,7 +83,7 @@ async function searchButton() {
         ' </div>' +
         '</div>';
     
-        news.innerHTML = articleRow;
+        news.innerHTML += articleRow;
       }
     });
   return articlesArray;
