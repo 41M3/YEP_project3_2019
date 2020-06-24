@@ -22,7 +22,9 @@ function LoginButtonPressed() {
       window.alert("Error : " + errorMessage);
     
     });
+    //window.location.href = 'http://localhost:3000';
   }
+
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
@@ -39,20 +41,19 @@ function LoginButtonPressed() {
       document.getElementById("logout").hidden = false;
       document.getElementById("user").innerHTML = 'Bienvenue ' + user.email;
       document.getElementById("user").hidden = false;
-      //window.alert("You're logged in as : " + email);  
     } else {
       // No user is signed in.
       document.getElementById("connect").hidden = false;
       document.getElementById("sign").hidden = false;
       document.getElementById("logout").hidden = true;
       document.getElementById("user").hidden = true;
-      //window.alert("You're not logged in !");
     }
+    //window.alert("You're not logged in !");
   });
   
-  function logout(){
-    firebase.auth().signOut();
-  }
+function logout(){
+  firebase.auth().signOut();
+}
 
 function handleSignUp() {
     var email = document.getElementById('email').value;
@@ -66,7 +67,9 @@ function handleSignUp() {
       alert('Please enter a better password.');
       return;
     }
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    /*
+    Before -> return to home bugged
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function(value) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -76,12 +79,32 @@ function handleSignUp() {
         alert(errorMessage);
       }
       console.log(error);
-    });
-    //window.history.back(); 
+      
+    });*/
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function(value) {
+      console.log(value);
+      window.location.href = 'http://localhost:3000';
+      }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+      console.log(error);
+      });
 }
 
 function sendEmailVerification() {
     firebase.auth().currentUser.sendEmailVerification().then(function() {
       alert('Email Verification Sent!');
+    }).catch(function(error) {
+      window.alert("error");
     });
+}
+
+function sendResetEmail() {
+
 }
