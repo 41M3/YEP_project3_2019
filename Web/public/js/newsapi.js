@@ -16,14 +16,11 @@ async function getNews(url) {
     if (elemnt.author != null && elemnt.title != null && elemnt.description != null && elemnt.url != null && elemnt.urlToImage != null) {    
       let articleRow =
         '<div class="articlerow">' +
+        ' <a href="' + elemnt.url + '" target="_blank" class="readmore"><img class="storyimage" src="' + elemnt.urlToImage + '" /></a>' +
         ' <div class="article">' +
-        '   <h2 class="title">' + elemnt.title + '</h2>' +
-        '   <h3>By ' + elemnt.author +'</h3>' +
+        '   <h2 class="article_title">' + elemnt.title + '</h2>' +
         '   <p> ' + elemnt.description + '</p>' +
-        '   <a href="' + elemnt.url + '" target="_blank" class="readmore">Read More</a>' +
-        ' </div>' +
-        ' <div class="share">' +
-        '   <img class="storyimage" src="' + elemnt.urlToImage + '" />' +
+        '   <h3>Rédigé par ' + elemnt.author +'</h3>' +
         ' </div>' +
         '</div>';
   
