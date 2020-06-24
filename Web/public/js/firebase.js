@@ -15,14 +15,13 @@ function LoginButtonPressed() {
     var userEmail = document.getElementById("email").value;
     var userPass = document.getElementById("password").value;
   
-    firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-      // Errors
+    firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function(value) {
+      window.location.href = 'http://localhost:3000';
+    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
       window.alert("Error : " + errorMessage);
-    
     });
-    //window.location.href = 'http://localhost:3000';
   }
 
   firebase.auth().onAuthStateChanged(function(user) {
