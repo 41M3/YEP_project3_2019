@@ -77,7 +77,7 @@ function handleSignUp() {
       }
       console.log(error);
     });
-    window.history.back(); 
+    //window.history.back(); 
 }
 
 function sendEmailVerification() {
