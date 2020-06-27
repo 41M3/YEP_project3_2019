@@ -10,7 +10,7 @@ Make sure that "flutter" is installed on your computer
 
 plug your smartphone on your PC
 
-Open the folder Delivery and execute this command in your shell:
+Open the folder and execute this command in your shell:
 
 flutter run
 
@@ -46,4 +46,4 @@ Open the folder Delivery and execute this command in your shell:
 
 sudo docker-compose up --build
 
-After building you can launch your browser and go to this adress "http://localhost:3000/"
+After building you can launch your browser and go to this address "http://localhost:3000/"
