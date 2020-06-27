@@ -42,7 +42,7 @@ flutter run
 To launch web version (beta)
 
 Make sure that "docker-compose" is installed on your computer
-Open the folder Delivery and execute this command in your shell:
+Open the folder /Web and execute this command in your shell:
 
 sudo docker-compose up --build
 
